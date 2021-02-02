@@ -54,8 +54,10 @@ class Controller_Add_Edit extends Controller_Base
 		$param['dob'] = $args['dob'];
 
 		$i = 0;
-		while ($args['phone' . $i]) {
-			$param['phone'] .= $args['phone' . $i] . ', ';
+		while (array_key_exists(('phone' . $i), $args)) {
+			if ($args['phone' . $i] != "") {
+				$param['phone'] .= $args['phone' . $i] . ', ';
+			}
 			$i++;
 		}
 
